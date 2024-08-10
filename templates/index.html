@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeminiChats</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Poppins', sans-serif;
         display: flex;
         height: 100vh;
         margin: 0;
-        background-color: #ecf0f1;
+        background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
         transition: background-color 0.3s, zoom 0.3s;
     }
     .sidebar {
@@ -24,7 +24,8 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: background-color 0.3s;
+        border-radius: 15px 0 0 15px;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.1);
     }
     .sidebar h3 {
         margin-bottom: 10px;
@@ -33,10 +34,11 @@
     .profile-image {
         width: 130px;
         height: 130px;
-        border-radius: 50%;
+        border-radius: 25%;
         margin: 3px auto;
         display: block;
-        border: 2px solid #3498db;
+        border: 3px solid #f39c12;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
     .sidebar ul {
         list-style-type: none;
@@ -49,9 +51,11 @@
         margin-bottom: 5px;
         border-radius: 5px;
         color: white;
+        transition: background-color 0.3s, transform 0.2s;
     }
     .sidebar ul li:hover {
-        background-color: #e74c3c;
+        background-color: #ff6f61;
+        transform: scale(1.05);
     }
     .sidebar button {
         background-color: #e74c3c;
@@ -62,9 +66,11 @@
         margin-top: 10px;
         width: 100%;
         border-radius: 5px;
+        transition: background-color 0.3s, transform 0.2s;
     }
     .sidebar button:hover {
-        background-color: #c0392b;
+        background-color: #5a1109;
+        transform: scale(1.05);
     }
     .main-content {
         flex: 1;
@@ -77,23 +83,23 @@
         text-align: center;
         color: #2c3e50;
         margin: 0;
-        font-family: 'Arial', sans-serif;
     }
     .chat-box {
         flex: 1;
         overflow-y: auto;
         padding: 20px;
-        border: 1px solid #bdc3c7;
         background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         margin-bottom: 10px;
         height: 60vh;
     }
-    .chat-box p {
+    .chat-box p, .chat-box pre {
         padding: 10px;
         background-color: #e1f5fe;
-        border-radius: 5px;
+        border-radius: 10px;
         margin-bottom: 10px;
-        word-wrap: break-word;
+        white-space: pre-wrap;
     }
     .input-area {
         display: flex;
@@ -105,6 +111,7 @@
         border-radius: 25px;
         border: 1px solid #bdc3c7;
         outline: none;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .input-area button {
         position: absolute;
@@ -117,6 +124,7 @@
         padding: 10px;
         border-radius: 50%;
         cursor: pointer;
+        transition: background-color 0.3s;
     }
     .input-area button:hover {
         background-color: #2980b9;
@@ -124,14 +132,8 @@
     .input-area button i {
         font-size: 20px;
     }
-    .chat-box pre {
-        white-space: pre-wrap; /* Preserve whitespace and line breaks */
-        background-color: #e1f5fe;
-        border-radius: 5px;
-        padding: 10px;
-    }
     .modal {
-        display: none; /* Hidden by default */
+        display: none;
         position: fixed;
         z-index: 1000;
         left: 0;
@@ -139,9 +141,7 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgb(0,0,0);
         background-color: rgba(0,0,0,0.4);
-        transition: opacity 0.3s;
     }
     .modal-content {
         background-color: #fefefe;
@@ -150,31 +150,22 @@
         border: 1px solid #888;
         width: 80%;
         max-width: 500px;
+        border-radius: 10px;
     }
-    .modal-header {
-        padding: 2px 16px;
+    .modal-header, .modal-footer {
         background-color: #5cb85c;
         color: white;
-    }
-    .modal-body {
-        padding: 2px 16px;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
     }
     .modal-footer {
-        padding: 2px 16px;
-        background-color: #5cb85c;
-        color: white;
         text-align: right;
+        border-radius: 0 0 10px 10px;
     }
     .close {
-        color: white;
         float: right;
         font-size: 28px;
         font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
         cursor: pointer;
     }
     .theme-option {
@@ -185,16 +176,18 @@
         background-color: #3498db;
         color: white;
         text-align: center;
+        transition: background-color 0.3s, transform 0.2s;
     }
     .theme-option:hover {
         background-color: #2980b9;
+        transform: scale(1.05);
     }
 </style>
 <body>
 
 <div class="sidebar">
     <h3>GeminiChats</h3>
-    <img src="{{ url_for('static', filename='profile img.PNG') }}" alt="Profile Image" class="profile-image">
+    <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Profile Image" class="profile-image">
     <p>---------------------------------------------</p>
     <div class="chat-list">
         <ul id="chat-list">
@@ -210,7 +203,7 @@
 </div>
 
 <div class="main-content">
-    <h1>GeminiChats BY Noor Saeed</h1>
+    <h1>GeminiChat By Nurcan</h1>
     <h4>How may I help Today?</h4>
     <hr>
     <div class="chat-box" id="chat-box">
