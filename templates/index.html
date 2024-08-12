@@ -69,7 +69,7 @@
         transition: background-color 0.3s, transform 0.2s;
     }
     .sidebar button:hover {
-        background-color: #5a1109;
+        background-color: #75231a;
         transform: scale(1.05);
     }
     .main-content {
@@ -248,7 +248,7 @@
     </div>
 </div>
 <script>
-    let activeChatId = 1;  // Default active chat ID is the first one
+   let activeChatId = 1;  // Default active chat ID is the first one
     let currentZoom = 1;   // Default zoom level
 
     function loadChats() {
@@ -313,6 +313,47 @@
         }
     }
 
+
+    function sendMessage(){
+
+    const userInput = document.getElementById('user-input').value;
+    if (userInput.trim() === '') return;
+
+    const chatBox = document.getElementById('chat-box');
+    const userMessage = document.createElement('pre');
+    userMessage.textContent = `User: ${userInput}`;
+    chatBox.appendChild(userMessage);
+
+    document.getElementById('user-input').value = '';
+
+    // Show loading spinner
+    document.getElementById('loading-spinner').style.display = 'block';
+
+    fetch('/generate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ input: userInput, chat_id: activeChatId })
+    })
+
+    .then(response => response.json())
+    .then(data => {
+        const aiMessage = document.createElement('pre');
+        aiMessage.textContent = `AI: ${data.response}`;
+        chatBox.appendChild(aiMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Hide loading spinner
+        document.getElementById('loading-spinner').style.display = 'none';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Hide loading spinner in case of error
+        document.getElementById('loading-spinner').style.display = 'none';
+    });
+
+    }
 
     function deleteSelectedChats() {
         if (confirm('Are you sure you want to delete the selected chat?')) {
