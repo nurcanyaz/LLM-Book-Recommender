@@ -37,9 +37,9 @@ This project is a web-based intelligent chatbot application built using **Google
 ### 📸 Screenshots  
 **Chat Interface**  
 
-- `chat.png`  
-- `settings.png`
-
+- ![Chat Screenshot](chat.png)  
+- ![Settings Screenshot](settings.png)
+ 
 ---
 
 ### 📂 Project Structure  
@@ -98,14 +98,7 @@ Visit 👉 http://127.0.0.1:5000/
 - The front-end is responsive and mobile-friendly  
 - Ideal for experimenting with Gemini's conversational abilities
 
----
 
-### 👤 Developed by  
-**Nurcan Yaz**  
-Computer Engineer | AI Researcher 
-[GitHub](https://github.com/nurcanyaz)
-
----
 
 ## 📗 Türkçe Versiyonu
 
@@ -140,9 +133,8 @@ Bu proje, **Google Gemini API** modeli ile geliştirilen web tabanlı bir sohbet
 ### 📸 Ekran Görselleri  
 **Sohbet Arayüzü**  
 
-- `chat.png`  
-- `settings.png`
-
+- ![Chat Screenshot](chat.png)  
+- ![Settings Screenshot](settings.png)
 ---
 
 ### 📂 Proje Yapısı  
