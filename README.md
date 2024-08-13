@@ -59,7 +59,7 @@ gemini-chatbot/
 **1. Clone the repository:**
 ```bash
 git clone https://github.com/nurcanyaz/chatbot.git
-cd chatbot
+cd gemini-chatbot
 ```
 
 **2. Install dependencies:**
@@ -154,7 +154,7 @@ gemini-chatbot/
 **1. Reponun kopyalanması:**
 ```bash
 git clone https://github.com/nurcanyaz/chatbot.git
-cd chatbot
+cd gemini-chatbot
 ```
 
 **2. Gerekli kütüphanelerin kurulumu:**
