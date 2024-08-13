@@ -58,7 +58,7 @@ gemini-chatbot/
 ### 🔧 Setup Instructions  
 **1. Clone the repository:**
 ```bash
-git clone https://github.com/nurcanyaz/chatbot.git
+git clone https://github.com/nurcanyaz/gemini-chatbot.git
 cd gemini-chatbot
 ```
 
@@ -153,7 +153,7 @@ gemini-chatbot/
 ### 🔧 Kurulum Adımları  
 **1. Reponun kopyalanması:**
 ```bash
-git clone https://github.com/nurcanyaz/chatbot.git
+git clone https://github.com/nurcanyaz/gemini-chatbot.git
 cd gemini-chatbot
 ```
 
